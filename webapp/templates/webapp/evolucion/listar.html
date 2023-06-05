@@ -1,0 +1,33 @@
+{% extends 'webapp/base.html' %}
+{% block content %}
+<a class="btn btn-outline-primary btn-small" href="{% url 'agregar_evolucion' %}">
+    Agregar evolucion
+</a>
+<hr>
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Paciente</th>
+                <th scope="col">fecha</th>
+                <th scope="col">detalle</th>
+                <th scope="col">Profesional Responsable</th>
+                <th scope="col">Ver</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if evoluciones %}
+            {% for evolucion in evoluciones %}
+            <tr>
+                <td>{{evolucion.id}}</td>
+                <td>{{evolucion.paciente}}</td>
+                <td>{{evolucion.fecha}}</td>
+                <td>{{evolucion.detalle|truncatechars:15}}</td>
+                <td>{{evolucion.profesional_responsable}}</td>
+                <td><a href="{% url 'detalle_evolucion' evolucion.id %}">detalle</a></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

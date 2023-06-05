@@ -1,0 +1,26 @@
+{% extends 'webapp/base.html' %}
+{% block content %}
+        <div class="card">
+            <strong>
+                <br>
+                &nbsp;
+                &nbsp;
+                {{historiaClinica.id}}
+                {{historiaClinica.fecha}}
+            </strong>
+            <hr>
+            <div class="card-body">
+                <p><strong>ID: </strong>{{historiaClinica.id}}</p>
+                <p><strong>Paciente:</strong>{{historiaClinica.paciente}}</p>
+                <p><strong>fecha: </strong>{{historiaClinica.fecha}}</p>
+                <p><strong>Detalle: </strong>{{historiaClinica.detalle}}</p>
+                <p><strong>Profesional Responsable: </strong>{{historiaClinica.profesional_responsable}}</p>
+            </div>
+        </div>
+        <br>
+        <a href="{% url 'listar_historiasClinicas' %}" class="btn btn-secondary">Volver</a>
+        &nbsp;
+        <a href="{% url 'modificar_historiaClinica' historiaClinica.id %}" class="btn btn-primary">Modificar</a>
+        &nbsp;
+        <a href="{% url 'eliminar_historiaClinica' historiaClinica.id %}" class="btn btn-danger">Eliminar</a>
+{% endblock %}

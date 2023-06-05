@@ -1,0 +1,34 @@
+{% extends 'webapp/base.html' %}
+{% block content %}
+<a class="btn btn-outline-primary btn-small" href="{% url 'agregar_historiaClinica' %}">
+    Agregar entrada en Hc.
+</a>
+<hr>
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Paciente</th>
+                <th scope="col">fecha</th>
+                <th scope="col">detalle</th>
+                <th scope="col">Profesional Responsable</th>
+                <th scope="col">Ver</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if historiasClinicas %}
+            {% for historiaClinica in historiasClinicas %}
+            <tr>
+                <td>{{historiaClinica.id}}</td>
+                <td>{{historiaClinica.paciente}}</td>
+                <td>{{historiaClinica.fecha}}</td>
+                <td>{{historiaClinica.motivo|truncatechars:15}}</td>
+                <td>{{historiaClinica.detalle|truncatechars:15}}</td>
+                <td>{{historiaClinica.profesional_responsable}}</td>
+                <td><a href="{% url 'detalle_historiaClinica' historiaClinica.id %}">detalle</a></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
